@@ -6,6 +6,10 @@
 
 nextflow.enable.dsl=2
 
+plugins {
+    id: 'nf-google'
+}
+
 include { lifesciences_step } from './modules/lifesciences'
 //include { k8s_step } from './modules/k8s'
 // k8s_step()
