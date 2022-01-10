@@ -7,9 +7,9 @@
 nextflow.enable.dsl=2
 
 include { lifesciences_step } from './modules/lifesciences'
-include { k8s_step } from './modules/k8s'
+//include { k8s_step } from './modules/k8s'
+// k8s_step()
 
 workflow {
-    // k8s_step()
     lifesciences_step()
 }
