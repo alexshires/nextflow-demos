@@ -8,9 +8,7 @@ process lifesciences_step {
   cpus 4
   memory '8 GB'
   disk '100 GB'
-  executor = 'google-lifesciences'
-  container = 'eu.gcr.io/ashires-pso-experimental/nextflow-step-container:latest'
   script: """
-  python /step.py
+  python3 /step.py
   """
 }

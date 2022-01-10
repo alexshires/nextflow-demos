@@ -8,6 +8,6 @@ process k8s_step {
     executor = 'k8s'
     container = 'eu.gcr.io/ashires-pso-experimental/nextflow-step-container:latest'
     script: """
-  python /step.py
+  python3 /step.py
   """
 }
