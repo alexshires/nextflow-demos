@@ -6,10 +6,10 @@
 
 nextflow.enable.dsl=2
 
-include { modfunc } from './modules/modex'
 include { lifesciences_step } from './modules/lifesciences'
 include { k8s_step } from './modules/k8s'
 
 workflow {
     k8s_step()
+    lifesciences_step()
 }
