@@ -5,6 +5,7 @@
  */
 
 process lifesciences_step {
+  executor = 'google_lifesciences'
   cpus 4
   memory '8 GB'
   disk '100 GB'

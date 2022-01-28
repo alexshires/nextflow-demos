@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gigantic-picasso
+  namespace: default
+  labels: {app: nextflow, runName: gigantic-picasso}
+spec:
+  restartPolicy: Never
+  containers:
+  - name: gigantic-picasso
+    image: nextflow/nextflow:21.10.6
+    command: [/bin/bash, -c, source /etc/nextflow/init.sh; nextflow run alexshires/nextflow-demos
+        -name gigantic-picasso -r main]
+    env:
+    - {name: NXF_WORK, value: /nextflow/work}
+    - {name: NXF_ASSETS, value: /nextflow/projects}
+    - {name: NXF_EXECUTOR, value: k8s}
+    - {name: NXF_ANSI_LOG, value: 'false'}
+    volumeMounts:
+    - {name: vol-1, mountPath: /nextflow}
+    - {name: vol-2, mountPath: /etc/nextflow}
+  serviceAccountName: system:serviceaccount:nextflow:default
+  volumes:
+  - name: vol-1
+    persistentVolumeClaim: {claimName: nextflow-filestore-claim}
+  - name: vol-2
+    configMap: {name: nf-config-41897c57}

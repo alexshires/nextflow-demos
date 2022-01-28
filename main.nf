@@ -10,5 +10,5 @@ include { lifesciences_step } from './modules/lifesciences'
 include { k8s_step } from './modules/k8s'
 
 workflow {
-    lifesciences_step()
+    k8s_step()
 }
