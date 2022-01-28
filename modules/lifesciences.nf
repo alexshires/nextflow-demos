@@ -10,6 +10,6 @@ process lifesciences_step {
   disk '100 GB'
   container = 'eu.gcr.io/ashires-pso-experimental/nextflow-strun.shep-container:latest'
   script: """
-  python3 /step.py lifesciences-command
+  python3 step.py lifesciences-command
   """
 }
