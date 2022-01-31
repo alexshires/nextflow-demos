@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+  namespace: nextflow
+  labels: {app: nextflow, runName: admiring-euclid}
+spec:
+  restartPolicy: Never
+  containers:
+  - name: testpod
+    image: nginx
+    #volumeMounts:
+    #- {name: vol-1, mountPath: /mnt/nextflow/nextflow, subPath: /nextflow/data}
+    # serviceAccountName: system:serviceaccount:nextflow:default
+  serviceAccountName: nextflow/default
+  #volumes:
+  #- name: vol-1
+  #persistentVolumeClaim: {claimName: nextflow-filestore-nextflow-claim}
+
+

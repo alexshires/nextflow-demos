@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-./nextflow kuberun alexshires/nextflow-demos -r main -v nextflow-filestore-claim:/nextflow
+./nextflow run alexshires/nextflow-demos -r main -w gs://ashires-nextflow-work/k8s-test
+# -v nextflow-filestore-nextflow-claim:/mnt/nextflow/nextflow

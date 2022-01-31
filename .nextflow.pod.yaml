@@ -1,27 +1,27 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gigantic-picasso
-  namespace: default
-  labels: {app: nextflow, runName: gigantic-picasso}
+  name: admiring-euclid
+  namespace: nextflow
+  labels: {app: nextflow, runName: admiring-euclid}
 spec:
   restartPolicy: Never
   containers:
-  - name: gigantic-picasso
+  - name: admiring-euclid
     image: nextflow/nextflow:21.10.6
     command: [/bin/bash, -c, source /etc/nextflow/init.sh; nextflow run alexshires/nextflow-demos
-        -name gigantic-picasso -r main]
+        -name admiring-euclid -r main]
     env:
-    - {name: NXF_WORK, value: /nextflow/work}
-    - {name: NXF_ASSETS, value: /nextflow/projects}
+    - {name: NXF_WORK, value: /mnt/nextflow/nextflow/ashires/work}
+    - {name: NXF_ASSETS, value: /mnt/nextflow/nextflow/projects}
     - {name: NXF_EXECUTOR, value: k8s}
     - {name: NXF_ANSI_LOG, value: 'false'}
     volumeMounts:
-    - {name: vol-1, mountPath: /nextflow}
+    - {name: vol-1, mountPath: /mnt/nextflow/nextflow, subPath: /nextflow/data}
     - {name: vol-2, mountPath: /etc/nextflow}
   serviceAccountName: system:serviceaccount:nextflow:default
   volumes:
   - name: vol-1
-    persistentVolumeClaim: {claimName: nextflow-filestore-claim}
+    persistentVolumeClaim: {claimName: nextflow-filestore-nextflow-claim}
   - name: vol-2
-    configMap: {name: nf-config-41897c57}
+    configMap: {name: nf-config-b03b50e0}
