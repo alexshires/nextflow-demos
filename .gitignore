@@ -132,3 +132,4 @@ dmypy.json
 .idea
 .nextflow.log
 .nextflow.log*
+.nextflow
