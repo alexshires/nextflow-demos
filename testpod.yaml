@@ -9,12 +9,12 @@ spec:
   containers:
   - name: testpod
     image: nginx
-    #volumeMounts:
-    #- {name: vol-1, mountPath: /mnt/nextflow/nextflow, subPath: /nextflow/data}
-    # serviceAccountName: system:serviceaccount:nextflow:default
+    volumeMounts:
+    - {name: vol-1, mountPath: /nextflow, subPath: /nextflow/data}
+    serviceAccountName: system:serviceaccount:nextflow:default
   serviceAccountName: nextflow/default
-  #volumes:
-  #- name: vol-1
-  #persistentVolumeClaim: {claimName: nextflow-filestore-nextflow-claim}
+  volumes:
+  - name: vol-1
+    persistentVolumeClaim: {claimName: nextflow-filestore-nextflow-claim}
 
 
